@@ -1,0 +1,8 @@
+.theos/
+tweak/packages/
+tweak/.theos/
+ipa/*.ipa
+!ipa/.gitkeep
+.DS_Store
+*.o
+*.d

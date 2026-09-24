@@ -1,0 +1,9 @@
+Package: com.chiu.ytmpw
+Name: ytm.pw
+Version: 0.1.0
+Architecture: iphoneos-arm
+Description: YouTube Music in glass. Liquid Glass redesign for the YTM iOS app.
+Maintainer: ChiuHuang
+Author: ChiuHuang
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)

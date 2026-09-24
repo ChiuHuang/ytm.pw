@@ -1,0 +1,44 @@
+name: Build IPA from your own YTM IPA
+
+on:
+  workflow_dispatch:
+    inputs:
+      ipa_url:
+        description: "Direct link to your decrypted YTM 9.34 .ipa"
+        required: true
+      version:
+        description: "Mod version label"
+        required: false
+        default: "0.1.0"
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Theos
+        run: |
+          git clone --recursive https://github.com/theos/theos.git "$HOME/theos"
+          echo "THEOS=$HOME/theos" >> "$GITHUB_ENV"
+
+      - name: Fetch decrypted IPA (link masked, artifact stays in this fork)
+        run: |
+          mkdir -p ipa
+          curl -sL "${{ inputs.ipa_url }}" -o ipa/ytm-decrypted.ipa
+          ls -la ipa/
+
+      - name: Layer check + build tweak
+        run: |
+          ./scripts/check-layers.sh
+          gmake -C tweak package
+
+      - name: Inject + repackage
+        run: |
+          echo "TODO(hosted): inject tweak/packages/*.deb into ipa/ytm-decrypted.ipa with cyan/azule and upload the artifact"
+          ls tweak/packages/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ytm-pw-tweak
+          path: tweak/packages/*.deb

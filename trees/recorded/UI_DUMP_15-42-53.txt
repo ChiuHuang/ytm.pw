@@ -1,0 +1,316 @@
+=== SCREENSHOT UI DUMP at 2026-09-25 07:42:53 +0000 ===
+Tweak Build: 4497e87f9423
+Current VideoID: 2nk4KNjK9qQ
+Playback Time: 0.413314
+ActivePlayer: YTPlayerViewController currentVideoID=2nk4KNjK9qQ contentVideoID=2nk4KNjK9qQ
+
+--- VIEW CONTROLLER HIERARCHY ---
+<YTMContentViewController: 0x1399e7700; title = ""; view = 0x139b7ae00; isViewLoaded = YES>
+  <UINavigationController: 0x1398ad200; title = ""; view = 0x139b7b000; isViewLoaded = YES>
+    <GOOHeaderViewController: 0x139e22800; title = ""; view = 0x14393dc00; isViewLoaded = YES>
+      <GOOFlexibleHeaderViewController: 0x139e22d00; title = ""; view = 0x1386e6d00; isViewLoaded = YES>
+        [Presented] ->
+          <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+            <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+            <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+              <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+      <YTMBrowseViewController: 0x139a71500; title = ""; view = 0x14393ddc0; isViewLoaded = YES>
+        <YTMBrowseResponseViewController: 0x139d55200; title = ""; view = 0x142de9880; isViewLoaded = YES>
+          <YTMTabViewController: 0x145cb5900; title = ""; view = 0x145d13e00; isViewLoaded = YES>
+            <YTLightweightCollectionViewController: 0x145c4f600; title = ""; view = 0x133a96680; isViewLoaded = YES>
+              [Presented] ->
+                <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+                  <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+                  <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+                    <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+            [Presented] ->
+              <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+                <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+                <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+                  <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+          [Presented] ->
+            <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+              <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+              <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+                <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+        [Presented] ->
+          <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+            <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+            <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+              <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+      [Presented] ->
+        <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+          <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+          <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+            <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+    <GOOHeaderViewController: 0x17156a800; title = ""; view = 0x170526680; isViewLoaded = YES>
+      <GOOFlexibleHeaderViewController: 0x17156ad00; title = ""; view = 0x171600600; isViewLoaded = YES>
+        [Presented] ->
+          <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+            <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+            <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+              <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+      <YTMBrowseViewController: 0x165793800; title = "活動"; view = 0x170525340; isViewLoaded = YES>
+        <YTMBrowseResponseViewController: 0x17280d200; title = ""; view = 0x170526a00; isViewLoaded = YES>
+          <YTMTabViewController: 0x17292ca00; title = ""; view = 0x1657a8400; isViewLoaded = YES>
+            <YTMInnerTubeCollectionViewController: 0x14f3c0000; title = ""; view = 0x172948000; isViewLoaded = YES>
+              [Presented] ->
+                <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+                  <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+                  <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+                    <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+            [Presented] ->
+              <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+                <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+                <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+                  <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+          [Presented] ->
+            <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+              <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+              <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+                <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+        [Presented] ->
+          <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+            <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+            <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+              <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+      [Presented] ->
+        <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+          <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+          <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+            <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+    [Presented] ->
+      <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+        <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+        <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+          <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+  <YTMPivotBarViewController: 0x139e20000; title = ""; view = 0x139db9900; isViewLoaded = YES>
+    [Presented] ->
+      <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+        <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+        <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+          <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+  <YTMWatchViewController: 0x139a70e00; title = ""; view = 0x1386e4000; isViewLoaded = YES>
+    <YTMNowPlayingViewController: 0x1398ae400; title = ""; view = 0x139b71400; isViewLoaded = YES>
+      [Presented] ->
+        <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+          <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+          <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+            <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+    <YTMMiniPlayerViewController: 0x1399e5900; title = ""; view = 0x139ce7700; isViewLoaded = YES>
+      <YTMQueueCarouselViewController: 0x1399e6800; title = ""; view = 0x139934e00; isViewLoaded = YES>
+        [Presented] ->
+          <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+            <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+            <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+              <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+      [Presented] ->
+        <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+          <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+          <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+            <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+    <YTMPlayerCarouselViewController: 0x1399e5e00; title = ""; view = 0x139dbce00; isViewLoaded = YES>
+      <YTMQueueCarouselViewController: 0x1399e6d00; title = ""; view = 0x139935c00; isViewLoaded = YES>
+        [Presented] ->
+          <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+            <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+            <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+              <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+      [Presented] ->
+        <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+          <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+          <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+            <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+    <YTMWatchNextResponseViewController: 0x144298a00; title = ""; view = 0x0; isViewLoaded = NO>
+      [Presented] ->
+        <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+          <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+          <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+            <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+    <YTMPlayerTabViewController: 0x144298f00; title = ""; view = 0x142da2400; isViewLoaded = YES>
+      <UIPageViewController: 0x1440fd800; title = ""; view = 0x1441b9180; isViewLoaded = YES>
+        <YTMQueueCollectionViewController: 0x1440fe400; title = ""; view = 0x144100e00; isViewLoaded = YES>
+          [Presented] ->
+            <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+              <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+              <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+                <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+        [Presented] ->
+          <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+            <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+            <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+              <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+      [Presented] ->
+        <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+          <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+          <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+            <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+    <YTMPlayerHeaderViewController: 0x144299400; title = ""; view = 0x142e4a000; isViewLoaded = YES>
+      [Presented] ->
+        <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+          <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+          <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+            <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+    <YTPlayerViewController: 0x1440ff600; title = ""; view = 0x1443bf980; isViewLoaded = YES>
+      <YTMVideoOverlayViewController: 0x1445c0000; title = ""; view = 0x144216400; isViewLoaded = YES>
+        <YTVRCaptionOverlayViewController: 0x145c3ad00; title = ""; view = 0x14f215680; isViewLoaded = YES>
+          [Presented] ->
+            <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+              <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+              <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+                <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+        [Presented] ->
+          <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+            <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+            <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+              <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+      [Presented] ->
+        <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+          <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+          <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+            <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+    [Presented] ->
+      <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+        <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+        <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+          <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+  [Presented] ->
+    <GOOHeaderViewController: 0x172b5c000; title = ""; view = 0x1709e2140; isViewLoaded = YES>
+      <GOOFlexibleHeaderViewController: 0x172b5c500; title = ""; view = 0x172a12700; isViewLoaded = YES>
+      <YTMAvatarAccountViewController: 0x14fad8000; title = ""; view = 0x1709e1f80; isViewLoaded = YES>
+        <YTMPrivacyTosFooterViewController: 0x165577700; title = ""; view = 0x170683000; isViewLoaded = YES>
+
+--- WINDOWS & VIEW HIERARCHY ---
+[WINDOW: YTMainWindow; frame = (0.0, 0.0; 428.0, 926.0)]
+  <YTMainWindow: 0x102e25b50; frame = (0.0, 0.0; 428.0, 926.0); hidden = NO; alpha = 1.00; userInteraction = YES; gestures = 4>
+    <UITransitionView: 0x139b7be00; frame = (0.0, 0.0; 428.0, 926.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+      <UIDropShadowView: 0x139ef4000; frame = (0.0, 0.0; 428.0, 926.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+    <WKWebView: 0x138524000; frame = (-1000.0, -1000.0; 300.0, 300.0); hidden = YES; alpha = 1.00; userInteraction = YES>
+      <WKScrollView: 0x138525400; frame = (0.0, 0.0; 300.0, 300.0); hidden = NO; alpha = 1.00; userInteraction = YES; gestures = 9>
+        <WKContentView: 0x138728000; frame = (0.0, 0.0; 300.2, 253.0); hidden = NO; alpha = 1.00; userInteraction = YES; gestures = 52>
+          <UIView: 0x139828700; frame = (0.0, 0.0; 980.0, 826.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+            <UIView: 0x1398288c0; frame = (0.0, 0.0; 980.0, 826.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+              <WKCompositingView: 0x146580380; frame = (0.0, 0.0; 980.0, 826.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                <WKCompositingView: 0x146582a00; frame = (0.0, 0.0; 980.0, 826.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                  <WKCompositingView: 0x146582d80; frame = (0.0, 0.0; 980.0, 826.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                    <WKCompositingView: 0x146580e00; frame = (0.0, 0.0; 0.0, 0.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                    <WKCompositingView: 0x146582bc0; frame = (0.0, 0.0; 980.0, 826.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                      <WKCompositingView: 0x133a94540; frame = (0.0, 0.0; 980.0, 826.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                        <WKCompositingView: 0x13982ad80; frame = (0.0, 0.0; 0.0, 0.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                          <WKChildScrollView: 0x1466a8000; frame = (0.0, 0.0; 980.0, 826.0); hidden = NO; alpha = 1.00; userInteraction = YES; gestures = 8>
+                            <WKCompositingView: 0x133a94380; frame = (0.0, 0.0; 0.0, 0.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                              <WKCompositingView: 0x142a9f2c0; frame = (0.0, 0.0; 980.0, 826.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                <WKCompositingView: 0x133a94c40; frame = (0.0, 0.0; 980.0, 826.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                  <WKCompositingView: 0x139829340; frame = (0.0, 0.0; 0.0, 0.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                  <WKCompositingView: 0x142c0c1c0; frame = (0.0, 0.0; 980.0, 826.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                    <WKCompositingView: 0x162692bc0; frame = (0.0, 0.0; 980.0, 826.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                      <WKTransformView: 0x162691500; frame = (0.0, 0.0; 0.0, 0.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                        <WKCompositingView: 0x162690000; frame = (0.0, 0.0; 1.0, 1.0); hidden = NO; alpha = 0.01; userInteraction = YES>
+                                          <WKCompositingView: 0x162692680; frame = (0.0, 0.0; 0.0, 0.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                            <WKChildScrollView: 0x14f29d400; frame = (0.0, 0.0; 1.0, 1.0); hidden = NO; alpha = 1.00; userInteraction = YES; gestures = 8>
+                                              <WKCompositingView: 0x162692840; frame = (0.0, 0.0; 0.0, 0.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                                <WKCompositingView: 0x162692d80; frame = (0.0, 0.0; 1.0, 1.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                                  <WKCompositingView: 0x162691a40; frame = (0.0, 0.0; 1.0, 1.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                                    <WKCompositingView: 0x162692a00; frame = (0.0, 0.0; 0.0, 0.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                                    <WKCompositingView: 0x1626916c0; frame = (0.0, 0.0; 1.0, 1.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                              <_UIScrollViewScrollIndicator: 0x1466d6000; frame = (-5.0, -38.0; 3.0, 36.0); hidden = NO; alpha = 0.00; userInteraction = YES; gestures = 3>
+                                                <UIView: 0x142c0ef40; frame = (0.0, 0.0; 3.0, 36.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                              <_UIScrollViewScrollIndicator: 0x145f10e00; frame = (-38.0, -5.0; 36.0, 3.0); hidden = NO; alpha = 0.00; userInteraction = YES; gestures = 3>
+                                                <UIView: 0x142cfb480; frame = (0.0, 0.0; 36.0, 3.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                                      <WKCompositingView: 0x1626901c0; frame = (0.0, 0.0; 980.0, 826.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                            <_UIScrollViewScrollIndicator: 0x145f12600; frame = (974.0, 3.0; 3.0, 820.0); hidden = NO; alpha = 0.00; userInteraction = YES; gestures = 3>
+                              <UIView: 0x142cf9f80; frame = (0.0, 0.0; 3.0, 820.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                            <_UIScrollViewScrollIndicator: 0x145f10600; frame = (3.0, 820.0; 974.0, 3.0); hidden = NO; alpha = 0.00; userInteraction = YES; gestures = 3>
+                              <UIView: 0x142cf8700; frame = (0.0, 0.0; 974.0, 3.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+          <WKVisibilityPropagationView: 0x139828a80; frame = (0.0, 0.0; 0.0, 0.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+        <UIView: 0x142a9fd40; frame = (0.0, 0.0; 0.0, 0.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+        <_UIScrollViewScrollIndicator: 0x145f13a00; frame = (294.0, 3.3; 3.0, 246.7); hidden = NO; alpha = 0.00; userInteraction = YES; gestures = 3>
+          <UIView: 0x147c6e680; frame = (0.0, 0.0; 3.0, 246.7); hidden = NO; alpha = 1.00; userInteraction = YES>
+        <_UIScrollViewScrollIndicator: 0x145f10000; frame = (3.0, 247.0; 294.0, 3.0); hidden = NO; alpha = 0.00; userInteraction = YES; gestures = 3>
+          <UIView: 0x147c6fd40; frame = (0.0, 0.0; 294.0, 3.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+    <UITransitionView: 0x170684c00; frame = (0.0, 0.0; 428.0, 926.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+      <UIView: 0x1709e2140; frame = (0.0, 0.0; 428.0, 926.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+        <UIView: 0x1709e1f80; frame = (0.0, 0.0; 428.0, 926.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+          <YTMAvatarAccountView: 0x14f399e00; frame = (0.0, 0.0; 428.0, 866.0); hidden = NO; alpha = 1.00; userInteraction = YES; gestures = 7>
+            <YTMAvatarAccountSubscriptionStatusView: 0x1709e2680; frame = (0.0, 0.0; 0.0, 0.0); hidden = YES; alpha = 1.00; userInteraction = YES>
+              <UILabel: 0x1709e2840; frame = (16.0, 0.0; 32.0, 0.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "">
+            <YTMBevelView: 0x1709e2a00; frame = (0.0, 106.0; 428.0, 1.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+            <YTMAccountIdentityView: 0x14f342f80; frame = (0.0, 0.0; 428.0, 106.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+              <UIImageView: 0x14f360280; frame = (16.0, 24.0; 32.0, 32.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+              <UIView: 0x1709e2bc0; frame = (64.0, 24.0; 348.0, 59.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                <UILabel: 0x1709e2d80; frame = (0.0, 0.0; 47.0, 17.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "真Ikun">
+                <UILabel: 0x1709e2f40; frame = (0.0, 17.0; 70.3, 17.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "@白子可愛">
+                <UILabel: 0x1709e3100; frame = (0.0, 0.0; 0.0, 0.0); hidden = YES; alpha = 1.00; userInteraction = NO; text = "">
+                <UILabel: 0x1709e32c0; frame = (0.0, 42.0; 140.0, 17.0); hidden = NO; alpha = 1.00; userInteraction = YES; text = "管理你的 Google 帳戶"; gestures = 1>
+            <UIScrollView: 0x14f3d4000; frame = (0.0, 107.0; 428.0, 432.0); hidden = NO; alpha = 1.00; userInteraction = YES; gestures = 7>
+              <YTMAccountButton: 0x1729e7800; frame = (0.0, 0.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = YES; title = "你的頻道"; gestures = 2>
+                <MDCInkView: 0x17064fe00; frame = (0.0, 0.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIImageView: 0x17155bc00; frame = (24.0, 12.0; 24.0, 24.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIButtonLabel: 0x170644000; frame = (84.0, 15.7; 56.0, 17.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "你的頻道">
+              <YTMAccountButton: 0x17280b100; frame = (0.0, 48.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = YES; title = "已下載的內容"; gestures = 2>
+                <MDCInkView: 0x170659200; frame = (0.0, 0.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIImageView: 0x17157a300; frame = (24.0, 12.0; 24.0, 24.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIButtonLabel: 0x17065a800; frame = (84.0, 15.7; 84.0, 17.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "已下載的內容">
+              <YTMAccountButton: 0x17280b480; frame = (0.0, 96.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = YES; title = "觀看記錄"; gestures = 2>
+                <MDCInkView: 0x170684200; frame = (0.0, 0.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIImageView: 0x162e07200; frame = (24.0, 12.0; 24.0, 24.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIButtonLabel: 0x170684000; frame = (84.0, 15.7; 56.0, 17.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "觀看記錄">
+              <YTMAccountButton: 0x17280bb80; frame = (0.0, 144.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = YES; title = "你的 Recap"; gestures = 2>
+                <MDCInkView: 0x170684600; frame = (0.0, 0.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIImageView: 0x170bfd180; frame = (24.0, 12.0; 24.0, 24.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIButtonLabel: 0x170684400; frame = (84.0, 15.7; 76.0, 17.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "你的 Recap">
+              <YTMAccountButton: 0x172928a80; frame = (0.0, 192.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = YES; title = "徽章"; gestures = 2>
+                <MDCInkView: 0x170684a00; frame = (0.0, 0.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIImageView: 0x170bfc000; frame = (24.0, 12.0; 24.0, 24.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIButtonLabel: 0x170684800; frame = (84.0, 15.7; 28.0, 17.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "徽章">
+              <YTMAccountButton: 0x17299e300; frame = (0.0, 240.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = YES; title = "切換帳戶"; gestures = 2>
+                <MDCInkView: 0x170685200; frame = (0.0, 0.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIImageView: 0x172842800; frame = (24.0, 12.0; 24.0, 24.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIButtonLabel: 0x170685000; frame = (84.0, 15.7; 56.0, 17.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "切換帳戶">
+              <YTMAccountButton: 0x17299df80; frame = (0.0, 288.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = YES; title = "設定"; gestures = 2>
+                <MDCInkView: 0x170685600; frame = (0.0, 0.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIImageView: 0x172843700; frame = (24.0, 12.0; 24.0, 24.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIButtonLabel: 0x170685400; frame = (84.0, 15.7; 28.0, 17.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "設定">
+              <YTMAccountButton: 0x17299ca80; frame = (0.0, 336.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = YES; title = "說明與意見回饋"; gestures = 2>
+                <MDCInkView: 0x170685a00; frame = (0.0, 0.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIImageView: 0x172843480; frame = (24.0, 12.0; 24.0, 24.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIButtonLabel: 0x170685800; frame = (84.0, 15.7; 98.0, 17.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "說明與意見回饋">
+              <YTMAccountButton: 0x17299e680; frame = (0.0, 384.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = YES; title = "YTMusicUltimate"; gestures = 2>
+                <MDCInkView: 0x170685e00; frame = (0.0, 0.0; 428.0, 48.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIImageView: 0x172843980; frame = (24.0, 12.0; 24.0, 24.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                <UIButtonLabel: 0x170685c00; frame = (84.0, 15.7; 123.0, 17.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "YTMusicUltimate">
+              <_UIScrollViewScrollIndicator: 0x170686200; frame = (422.0, -39.0; 3.0, 36.0); hidden = NO; alpha = 0.00; userInteraction = YES; gestures = 3>
+                <UIView: 0x170a04fc0; frame = (0.0, 0.0; 3.0, 36.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+              <_UIScrollViewScrollIndicator: 0x170684e00; frame = (418.0, 426.0; 7.0, 3.0); hidden = NO; alpha = 0.00; userInteraction = YES; gestures = 3>
+                <UIView: 0x170a056c0; frame = (0.0, 0.0; 7.0, 3.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+          <YTMPrivacyTosFooterView: 0x170683000; frame = (0.0, 866.0; 428.0, 60.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+            <UIView: 0x1709e1500; frame = (138.3, 8.0; 151.0, 18.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+              <YTFormattedStringLabel: 0x1729e5500; frame = (0.0, 0.0; 70.0, 18.0); hidden = NO; alpha = 1.00; userInteraction = YES; text = "">
+              <YTLabel: 0x172aabc00; frame = (79.0, 0.0; 7.0, 17.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "·">
+              <YTFormattedStringLabel: 0x1729e6a00; frame = (95.0, 0.0; 56.0, 18.0); hidden = NO; alpha = 1.00; userInteraction = YES; text = "">
+          <YTMNavigationDrawerPromoView: 0x1709e3800; frame = (0.0, 0.0; 428.0, 0.0); hidden = YES; alpha = 1.00; userInteraction = YES>
+            <QTMButton: 0x1729e5f80; frame = (0.0, -63.0; 428.0, 63.0); hidden = NO; alpha = 1.00; userInteraction = YES; title = ""; gestures = 2>
+              <MDCInkView: 0x17056ee00; frame = (0.0, 0.0; 428.0, 63.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+              <UIImageView: 0x17155af80; frame = (0.0, 0.0; 0.0, 0.0); hidden = YES; alpha = 1.00; userInteraction = NO>
+              <UIButtonLabel: 0x170574c00; frame = (0.0, 0.0; 0.0, 0.0); hidden = YES; alpha = 1.00; userInteraction = NO; text = "">
+            <UILabel: 0x1709e39c0; frame = (214.0, -75.0; 0.0, 0.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "">
+            <YTMBevelView: 0x1709e3b80; frame = (0.0, -88.0; 428.0, 1.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+        <MDCFlexibleHeaderView: 0x172a12700; frame = (0.0, 0.0; 428.0, 103.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+          <UIView: 0x1709e16c0; frame = (0.0, 0.0; 428.0, 47.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+          <UIView: 0x1709e1a40; frame = (0.0, 0.0; 428.0, 103.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+          <GOOHeaderNavigationView: 0x170683400; frame = (0.0, 0.0; 428.0, 103.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+            <MDCHeaderStackView: 0x1709e1c00; frame = (0.0, 47.0; 428.0, 56.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+              <GOONavigationBar: 0x172aab980; frame = (0.0, 0.0; 428.0, 56.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                <UILabel: 0x1709e1dc0; frame = (72.0, 16.0; 39.0, 24.0); hidden = NO; alpha = 1.00; userInteraction = NO; text = "帳戶">
+                <GOOButtonBar: 0x170683600; frame = (0.0, 0.0; 56.0, 56.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+                  <GOOButtonBarButton: 0x1729e6680; frame = (0.0, 0.0; 56.0, 56.0); hidden = NO; alpha = 1.00; userInteraction = YES; title = ""; gestures = 2>
+                    <MDCInkView: 0x170683c00; frame = (0.0, 0.0; 56.0, 56.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                    <UIImageView: 0x172aaa300; frame = (16.0, 16.0; 24.0, 24.0); hidden = NO; alpha = 1.00; userInteraction = NO>
+                    <UIButtonLabel: 0x170683a00; frame = (0.0, 0.0; 0.0, 0.0); hidden = YES; alpha = 1.00; userInteraction = NO; text = "">
+                <GOOButtonBar: 0x170683800; frame = (428.0, 0.0; 0.0, 56.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+    <MDCOverlayWindowContainerView: 0x1398281c0; frame = (0.0, 0.0; 428.0, 926.0); hidden = YES; alpha = 1.00; userInteraction = YES>
+[WINDOW: UITextEffectsWindow; frame = (0.0, 0.0; 428.0, 926.0)]
+  <UITextEffectsWindow: 0x1627a1900; frame = (0.0, 0.0; 428.0, 926.0); hidden = NO; alpha = 1.00; userInteraction = YES; gestures = 2>
+    <UITrackingWindowView: 0x139a69600; frame = (0.0, 0.0; 428.0, 926.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+      <UIKeyboardItemContainerView: 0x139a68000; frame = (0.0, 926.0; 428.0, 0.0); hidden = NO; alpha = 1.00; userInteraction = YES>
+      <UIEditingOverlayGestureView: 0x15836e4c0; frame = (0.0, 0.0; 428.0, 926.0); hidden = NO; alpha = 1.00; userInteraction = YES; gestures = 1>
