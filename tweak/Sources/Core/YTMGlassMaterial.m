@@ -29,8 +29,20 @@ static UIVisualEffect *YTMGlassRealEffect(YTMGlassStyle style, BOOL interactive)
             effect = [[glassCls alloc] init];
         }
         if (!effect) return nil;
-        if (interactive && [effect respondsToSelector:@selector(setIsInteractive:)]) {
-            [(id)effect setIsInteractive:YES];
+        if (interactive) {
+            // setIsInteractive: only exists on iOS 26+; reach it through
+            // NSInvocation so older SDKs still compile (-Werror forbids an
+            // undeclared message send even to id).
+            SEL interactiveSel = NSSelectorFromString(@"setIsInteractive:");
+            if ([effect respondsToSelector:interactiveSel]) {
+                NSMethodSignature *sig = [effect methodSignatureForSelector:interactiveSel];
+                NSInvocation *inv = [NSInvocation invocationWithMethodSignature:sig];
+                [inv setSelector:interactiveSel];
+                [inv setTarget:effect];
+                BOOL flag = YES;
+                [inv setArgument:&flag atIndex:2];
+                [inv invoke];
+            }
         }
         return effect;
     } @catch (NSException *e) {
