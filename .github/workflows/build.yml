@@ -33,7 +33,7 @@ jobs:
 
       - name: Layer check + package
         run: |
-          ./scripts/check-layers.sh
+          sh ./scripts/check-layers.sh
           gmake -C tweak package FINALPACKAGE=1
 
       - uses: actions/upload-artifact@v4
@@ -68,7 +68,7 @@ jobs:
 
       - name: Layer check + package + inject
         run: |
-          ./scripts/check-layers.sh
+          sh ./scripts/check-layers.sh
           gmake -C tweak package FINALPACKAGE=1
           cyan -i ipa/ytm-decrypted.ipa -o out/ytm.pw-unsigned.ipa -f tweak/packages/*.deb
           ls -la out/

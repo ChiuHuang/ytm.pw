@@ -7,7 +7,7 @@ export THEOS ?= $(HOME)/theos
 all: package
 
 package:
-	./scripts/check-layers.sh
+	sh ./scripts/check-layers.sh
 	$(MAKE) -C tweak package
 
 release: package
