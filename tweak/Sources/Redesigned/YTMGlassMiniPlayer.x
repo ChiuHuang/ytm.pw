@@ -32,7 +32,7 @@ static const NSInteger kYTMGlassMiniTag = 9002;
             if (sub == glass) continue;
             if ([sub isKindOfClass:[UIVisualEffectView class]]) {
                 sub.alpha = 0.0;
-            } else if (sub.subviews.count == 0 && [sub.backgroundColor alphaComponent] > 0.01) {
+            } else if (sub.subviews.count == 0 && YTMGlassColorAlpha(sub.backgroundColor) > 0.01) {
                 sub.alpha = 0.0;
             }
         }

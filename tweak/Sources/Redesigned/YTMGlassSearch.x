@@ -35,7 +35,7 @@ static const NSInteger kYTMGlassSearchTag = 9006;
             [container insertSubview:glass atIndex:0];
             // One-time: thin the container's own flat fill so the glass
             // reads through. Done only here so layout passes never stack.
-            if ([container.backgroundColor alphaComponent] > 0.01) {
+            if (YTMGlassColorAlpha(container.backgroundColor) > 0.01) {
                 container.backgroundColor = [container.backgroundColor colorWithAlphaComponent:0.25];
             }
             YTMGlassLog(@"search field glass installed");

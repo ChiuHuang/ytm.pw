@@ -32,6 +32,9 @@ void YTMGlassSetPreference(NSString *key, BOOL value);
 NSString *YTMGlassStringPreference(NSString *key, NSString *fallback);
 void YTMGlassSetStringPreference(NSString *key, NSString *value);
 
+// Alpha of a UIColor via its CGColor (UIColor has no alphaComponent).
+CGFloat YTMGlassColorAlpha(UIColor *color);
+
 // Device log line, always prefixed so `make log` can filter it.
 void YTMGlassLog(NSString *msg);
 

@@ -64,3 +64,14 @@ void YTMGlassSetStringPreference(NSString *key, NSString *value) {
 void YTMGlassLog(NSString *msg) {
     NSLog(@"[ytmglass] %@", msg);
 }
+
+CGFloat YTMGlassColorAlpha(UIColor *color) {
+    if (!color) return 0;
+    @try {
+        CGColorRef cg = color.CGColor;
+        if (!cg) return 0;
+        return CGColorGetAlpha(cg);
+    } @catch (NSException *e) {
+        return 0;
+    }
+}

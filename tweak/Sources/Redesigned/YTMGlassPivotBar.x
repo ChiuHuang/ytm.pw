@@ -42,7 +42,7 @@ static const NSInteger kYTMGlassPivotTag = 9001;
             if (sub == glass) continue;
             if ([sub isKindOfClass:[UIVisualEffectView class]]) {
                 sub.alpha = 0.0;
-            } else if (sub.subviews.count == 0 && [sub.backgroundColor alphaComponent] > 0.01) {
+            } else if (sub.subviews.count == 0 && YTMGlassColorAlpha(sub.backgroundColor) > 0.01) {
                 // Flat background slab (no children = not the item stack).
                 sub.alpha = 0.0;
             }
