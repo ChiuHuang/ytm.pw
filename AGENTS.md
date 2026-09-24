@@ -40,6 +40,11 @@ Apple's own iOS 26 material, reached via runtime lookup only.
   via avatar account-menu hook (`App/YTMGlassSettings.x`), playback tap
   (`Shared/YTMGlassPlayback.x`), lyrics service (`Shared/`).
   CI injects with cyan (`-i decrypted -o out -f deb`).
+- v0.5: pipeline mirrors ytmult (`main.yml`): same hosted IPA URL
+  (`file.chiuhuang.dev/dl/8d2a…`), pinned Theos + iPhoneOS16.5 SDK,
+  `TARGET = iphone:clang:16.5:13.0`, pipx cyan, `-uwsf deb -n name -b
+  bundle` inject, per-push release. Package id change pending (user
+  never gave the new value; `control` still `com.chiu.ytmpw`).
 - v0.4: push compiles the tweak on Actions (`tweak` job: theos +
   `gmake package`, deb artifact); IPA job is manual with `ipa_url`.
   Shared ad skip (`Shared/YTMGlassAdSkip.x`, `noAds` default YES +

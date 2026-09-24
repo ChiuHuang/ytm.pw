@@ -1,79 +1,122 @@
-name: Build
-
-# Every push compiles the tweak so breakage is caught immediately.
-# The unsigned IPA still needs your decrypted 9.34 IPA: run the
-# "Build IPA" job manually with a direct link (masked in logs, artifact
-# stays in your fork).
-
+name: Build and Release ytm.pw
 on:
   push:
-    branches: [main]
-  pull_request:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       ipa_url:
-        description: "Direct link to your decrypted YTM 9.34 .ipa (IPA job only)"
-        required: false
-        default: ""
+        description: "URL to the decrypted IPA file"
+        default: "https://file.chiuhuang.dev/dl/8d2a6b4f-8af4-4b1e-9f5e-e2524f5b06ab"
+        required: true
+        type: string
+
+      display_name:
+        description: "App Name (Optional)"
+        default: "YouTube Music"
+        required: true
+        type: string
+
+      bundle_id:
+        description: "BundleID (Optional)"
+        default: "com.google.ios.youtubemusic"
+        required: true
+        type: string
+
+env:
+  IPA_URL: ${{ inputs.ipa_url || 'https://file.chiuhuang.dev/dl/8d2a6b4f-8af4-4b1e-9f5e-e2524f5b06ab' }}
+  DISPLAY_NAME: ${{ inputs.display_name || 'YouTube Music' }}
+  BUNDLE_ID: ${{ inputs.bundle_id || 'com.google.ios.youtubemusic' }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  tweak:
-    name: Compile tweak
-    runs-on: macos-15
+  build:
+    name: Build ytm.pw
+    runs-on: macos-latest
+    permissions:
+      contents: write
+
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Install build deps
-        run: brew install make ldid dpkg xz
-
-      - name: Install Theos
-        run: |
-          git clone --recursive https://github.com/theos/theos.git "$HOME/theos"
-          echo "THEOS=$HOME/theos" >> "$GITHUB_ENV"
-
-      - name: Layer check + package
-        run: |
-          sh ./scripts/check-layers.sh
-          gmake -C tweak package FINALPACKAGE=1
-
-      - uses: actions/upload-artifact@v4
+      - name: Checkout Main
+        uses: actions/checkout@v6.0.2
         with:
-          name: ytm-pw-tweak-deb
-          path: tweak/packages/*.deb
+          path: main
+          submodules: recursive
 
-  ipa:
-    name: Build unsigned IPA
-    needs: tweak
-    if: inputs.ipa_url != ''
-    runs-on: macos-15
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install build deps
-        run: brew install make ldid dpkg xz
-
-      - name: Install Theos
+      - name: Validate IPA URL
         run: |
-          git clone --recursive https://github.com/theos/theos.git "$HOME/theos"
-          echo "THEOS=$HOME/theos" >> "$GITHUB_ENV"
+          curl -L -r 0-1023 -o sample.part "${{ env.IPA_URL }}" > /dev/null 2>&1
+
+          file_type=$(file --mime-type -b sample.part)
+
+          if [[ "$file_type" != "application/x-ios-app" && "$file_type" != "application/zip" ]]; then
+            echo "::error::Validation failed: The file is not a valid IPA file. Detected type: $file_type."
+            exit 1
+          fi
+
+      - name: Install Dependencies
+        run: brew install make ldid
+
+      - name: Set PATH environment variables
+        run: |
+          echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
+          echo "THEOS=${{ github.workspace }}/theos" >> $GITHUB_ENV
+
+      - name: Cache Theos
+        id: theos
+        uses: actions/cache@v5.0.3
+        env:
+          cache-name: theos_cache_344ee59
+        with:
+          path: theos/
+          key: ${{ env.cache-name }}
+          restore-keys: ${{ env.cache-name }}
+
+      - name: Setup Theos
+        if: steps.theos.outputs.cache-hit != 'true'
+        uses: actions/checkout@v6.0.2
+        with:
+          repository: theos/theos
+          ref: 344ee5925df036dbd1312b783ad5a00d153c2445
+          path: theos
+          submodules: recursive
+
+      - name: Download iOS SDK
+        if: steps.theos.outputs.cache-hit != 'true'
+        run: |
+          git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/theos/sdks.git
+          cd sdks
+          git sparse-checkout set --no-cone iPhoneOS16.5.sdk
+          git checkout
+          mv *.sdk $THEOS/sdks
 
       - name: Install cyan
-        run: pip install --force-reinstall https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
+        run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
 
-      - name: Fetch decrypted IPA (link masked, artifact stays in this fork)
+      - name: Download YouTube Music
+        run: wget "${{ env.IPA_URL }}" --no-verbose -O ytm.ipa
+
+      - name: Layer check + build tweak
         run: |
-          mkdir -p ipa out
-          curl -sL "${{ inputs.ipa_url }}" -o ipa/ytm-decrypted.ipa
-          ls -la ipa/
+          cd main
+          sh scripts/check-layers.sh
+          make package DEBUG=0 FINALPACKAGE=1
+          mv tweak/packages/*.deb ../ytmglass.deb
 
-      - name: Layer check + package + inject
-        run: |
-          sh ./scripts/check-layers.sh
-          gmake -C tweak package FINALPACKAGE=1
-          cyan -i ipa/ytm-decrypted.ipa -o out/ytm.pw-unsigned.ipa -f tweak/packages/*.deb
-          ls -la out/
+      - name: Inject tweak into provided IPA
+        run: cyan -i ytm.ipa -o ytm.pw-unsigned.ipa -uwsf ytmglass.deb -n "${{ env.DISPLAY_NAME }}" -b ${{ env.BUNDLE_ID }}
 
-      - uses: actions/upload-artifact@v4
+      - name: Create Release
+        uses: softprops/action-gh-release@v2.5.0
         with:
-          name: ytm-pw-unsigned-ipa
-          path: out/ytm.pw-unsigned.ipa
+          tag_name: build-${{ github.run_number }}
+          name: ytm.pw (build ${{ github.run_number }})
+          files: ytm.pw-unsigned.ipa
+          draft: false
+
+      - name: Output Release URL
+        run: |
+          echo "::notice::Release available at: https://github.com/${{ github.repository }}/releases"
