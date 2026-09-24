@@ -1,16 +1,14 @@
 #import "../Core/YTMGlassCore.h"
 #import "../Core/YTMGlassMaterial.h"
+#import "../Headers/YTMGlassHeaders.h"
+#import "../Shared/YTMGlassPlayback.h"
+#import "../Shared/YTMGlassPlayback.h"
 
-// Mod Settings, v1: defensive by necessity.
-//
-// YTM's settings screen structure varies by version, so instead of guessing
-// its table classes we expose a standalone page and wire it where proven:
-//   - YTMGlassPresentSettingsFromVC() is the entry point any proven hook
-//     (pivot long-press, settings row, URL scheme) can call.
-//   - The %ctor below attempts nothing until a settings host is confirmed
-//     against trees/recorded/ -- see TODO.
-// The redesign switch defaults ON (glass where available); turning it off
-// takes effect on next launch (switches are read at launch).
+// Mod Settings: look switch, lyrics endpoint + language, about.
+// Entry point is the account menu (avatar tap -> YTMAvatarAccountView hook
+// appends a Glass button -- the proven YTM settings anchor). Sections read
+// live prefs; text rows edit through alerts; the redesign switch needs a
+// restart (switches are read at launch).
 
 @interface YTMGlassSettingsController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *table;
@@ -27,24 +25,30 @@
     self.table.dataSource = self;
     self.table.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:self.table];
-    if (@available(iOS 26.0, *)) {
-        // Real glass header card for the settings page itself.
-        UIVisualEffectView *card = YTMGlassEffectView(YTMGlassStyleRegular, 20.0, NO);
-        card.frame = CGRectMake(16, 100, self.view.bounds.size.width - 32, 120);
-        card.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        card.userInteractionEnabled = NO;
-        [self.view addSubview:card];
-        [self.view bringSubviewToFront:self.table];
-        self.table.backgroundColor = [UIColor clearColor];
-    }
+    self.navigationItem.rightBarButtonItem =
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                     target:self
+                                                     action:@selector(closeSettings)];
+}
+
+- (void)closeSettings {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return YTMGlassAvailable() ? 1 : 2;
+    if (section == 0) return YTMGlassAvailable() ? 1 : 2;
+    if (section == 1) return 2;
+    return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) return @"Look";
+    if (section == 1) return @"Lyrics";
+    return @"About";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -52,21 +56,68 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"YTMGlassCell"];
     }
-    if (!YTMGlassAvailable() && indexPath.row == 0) {
-        cell.textLabel.text = @"Needs iOS 26";
-        cell.detailTextLabel.text = @"Liquid Glass is drawn by the system from iOS 26 on";
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.accessoryView = nil;
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    if (indexPath.section == 0) {
+        if (!YTMGlassAvailable() && indexPath.row == 0) {
+            cell.textLabel.text = @"Needs iOS 26";
+            cell.detailTextLabel.text = @"Liquid Glass is drawn by the system from iOS 26 on";
+            return cell;
+        }
+        cell.textLabel.text = @"Redesigned UI";
+        cell.detailTextLabel.text = @"Liquid Glass look (restart to apply)";
+        UISwitch *sw = [[UISwitch alloc] init];
+        sw.on = YTMGlassRedesignedUIStored();
+        sw.enabled = YTMGlassAvailable();
+        [sw addTarget:self action:@selector(glassSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+        cell.accessoryView = sw;
         return cell;
     }
-    cell.textLabel.text = @"Redesigned UI";
-    cell.detailTextLabel.text = YTMGlassAvailable() ? @"Liquid Glass look (restart to apply)" : @"Unavailable on this OS";
-    UISwitch *sw = [[UISwitch alloc] init];
-    sw.on = YTMGlassRedesignedUIStored();
-    sw.enabled = YTMGlassAvailable();
-    [sw addTarget:self action:@selector(glassSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-    cell.accessoryView = sw;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"Lyrics endpoint";
+            cell.detailTextLabel.text = YTMGlassStringPreference(@"lyricsEndpoint", YTMGlassDefaultLyricsEndpoint);
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        } else {
+            cell.textLabel.text = @"Lyrics language";
+            cell.detailTextLabel.text = YTMGlassStringPreference(@"lyricsLang", YTMGlassDefaultLyricsLang);
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        }
+        return cell;
+    }
+    cell.textLabel.text = @"ytm.pw 0.1.0";
+    cell.detailTextLabel.text = @"YouTube Music in glass (YTM 9.34)";
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 1) {
+        BOOL isEndpoint = (indexPath.row == 0);
+        NSString *key = isEndpoint ? @"lyricsEndpoint" : @"lyricsLang";
+        NSString *current = isEndpoint ? YTMGlassStringPreference(@"lyricsEndpoint", YTMGlassDefaultLyricsEndpoint)
+                                       : YTMGlassStringPreference(@"lyricsLang", YTMGlassDefaultLyricsLang);
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:isEndpoint ? @"Lyrics endpoint" : @"Lyrics language"
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        [alert addTextFieldWithConfigurationHandler:^(UITextField *field) {
+            field.text = current;
+            field.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        }];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction *a) {
+            NSString *value = [alert.textFields.firstObject.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            if (value.length) {
+                YTMGlassSetStringPreference(key, value);
+                [self.table reloadData];
+            }
+        }]];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void)glassSwitchChanged:(UISwitch *)sender {
@@ -84,6 +135,41 @@ void YTMGlassPresentSettingsFromVC(UIViewController *host) {
     [host presentViewController:nav animated:YES completion:nil];
 }
 
-// TODO(device): confirm the YTM 9.34 settings host class from a recorded
-// tree, then hook it to push YTMGlassSettingsController (native look keeps
-// YTM's own settings untouched).
+%hook YTMAvatarAccountView
+
+- (void)setAccountMenuUpperButtons:(id)upper lowerButtons:(id)lower {
+    @try {
+        Class btnCls = objc_getClass("YTMAccountButton");
+        if (btnCls && [lower isKindOfClass:[NSArray class]]) {
+            UIImage *icon = nil;
+            if (@available(iOS 13.0, *)) {
+                icon = [UIImage systemImageNamed:@"sparkles"];
+            }
+            UIView *selfRef = self;
+            YTMAccountButton *button = [(YTMAccountButton *)[btnCls alloc] initWithTitle:@"Glass"
+                                                                             identifier:@"ytmglass"
+                                                                                   icon:icon
+                                                                            actionBlock:^(BOOL finished) {
+                UIViewController *host = nil;
+                @try {
+                    if ([selfRef respondsToSelector:@selector(_viewControllerForAncestor)]) {
+                        host = [(YTMAvatarAccountView *)selfRef _viewControllerForAncestor];
+                    }
+                } @catch (NSException *e) {
+                }
+                YTMGlassPresentSettingsFromVC(host);
+            }];
+            if (button) {
+                NSMutableArray *arr = [NSMutableArray arrayWithArray:lower];
+                [arr addObject:button];
+                %orig(upper, arr);
+                return;
+            }
+        }
+    } @catch (NSException *e) {
+        YTMGlassLog([NSString stringWithFormat:@"account menu hook skipped: %@", e]);
+    }
+    %orig;
+}
+
+%end

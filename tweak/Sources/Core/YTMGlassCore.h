@@ -28,6 +28,10 @@ void YTMGlassSetRedesignedUIStored(BOOL enabled);
 BOOL YTMGlassPreference(NSString *key, BOOL fallback);
 void YTMGlassSetPreference(NSString *key, BOOL value);
 
+// Generic string preference under YTMGlassDefaultsKey.
+NSString *YTMGlassStringPreference(NSString *key, NSString *fallback);
+void YTMGlassSetStringPreference(NSString *key, NSString *value);
+
 // Device log line, always prefixed so `make log` can filter it.
 void YTMGlassLog(NSString *msg);
 

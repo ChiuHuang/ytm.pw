@@ -33,6 +33,7 @@
 @end
 
 @interface YTPlayerViewController : UIViewController
+@property (nonatomic, assign, readonly) id playerResponse;
 - (NSString *)currentVideoID;
 - (CGFloat)currentVideoMediaTime;
 - (CGFloat)currentVideoTotalMediaTime;
@@ -48,6 +49,51 @@
 @end
 
 @interface YTMTabViewController : UIViewController
+@end
+
+// --- Mini player / fullscreen player views ---
+// YTMMiniPlayerView (428x64: queue carousel + play controls) and
+// YTMNowPlayingView (title, ELM row, scrubber, transport) live under
+// YTMWatchViewController. Same dump:265 (mini), 576 (now playing).
+@interface YTMMiniPlayerView : UIView
+@end
+
+@interface YTMNowPlayingView : UIView
+@end
+
+@interface YTMPlayerControlsView : UIView
+@end
+
+@interface YTMStoryboardScrubber : UIView
+@end
+
+// --- Account menu (settings entry point) ---
+// Tapping the avatar opens the account menu via
+// -setAccountMenuUpperButtons:lowerButtons:. Appending a YTMAccountButton
+// there is the proven settings hook.
+@interface YTMAccountButton : UIButton
+- (instancetype)initWithTitle:(NSString *)title
+                   identifier:(NSString *)identifier
+                         icon:(UIImage *)icon
+                  actionBlock:(void(^)(BOOL finished))block;
+@end
+
+@interface YTMAvatarAccountView : UIView
+- (UIViewController *)_viewControllerForAncestor;
+@end
+
+// --- Player response chain (title / artist) ---
+@interface YTPlayerResponse : NSObject
+@property (nonatomic, assign, readonly) id playerData;
+@end
+
+@interface YTIPlayerResponse : NSObject
+@property (nonatomic, assign, readonly) id videoDetails;
+@end
+
+@interface YTIVideoDetails : NSObject
+@property (nonatomic, copy, readwrite) NSString *title;
+@property (nonatomic, copy, readwrite) NSString *author;
 @end
 
 #endif

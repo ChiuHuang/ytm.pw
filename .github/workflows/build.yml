@@ -33,12 +33,15 @@ jobs:
           ./scripts/check-layers.sh
           gmake -C tweak package
 
-      - name: Inject + repackage
+      - name: Inject tweak into IPA (cyan)
         run: |
-          echo "TODO(hosted): inject tweak/packages/*.deb into ipa/ytm-decrypted.ipa with cyan/azule and upload the artifact"
-          ls tweak/packages/
+          uv tool install "cyan @ git+https://github.com/asdfzxcvbn/pyzule-rw"
+          mkdir -p out
+          # Flags follow cyan's README; adjust here if its CLI moves.
+          cyan -i ipa/ytm-decrypted.ipa -o out/ytm.pw-unsigned.ipa -f tweak/packages/*.deb
+          ls -la out/
 
       - uses: actions/upload-artifact@v4
         with:
-          name: ytm-pw-tweak
-          path: tweak/packages/*.deb
+          name: ytm-pw-unsigned-ipa
+          path: out/ytm.pw-unsigned.ipa

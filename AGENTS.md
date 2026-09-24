@@ -33,11 +33,17 @@ Apple's own iOS 26 material, reached via runtime lookup only.
   YTMPlayerViewController, YTMBrowseViewController...).
 - First slice: glass pivot bar (`Redesigned/YTMGlassPivotBar.x`, tag
   9001). Player/lyrics/settings-host are stubs with TODOs.
+- v0.2: glass mini player (tag 9002, `YTMGlassMiniPlayer.x`), player
+  transport glass + scrubber rounding (`YTMGlassPlayer.x`, tag 9003),
+  full lyrics sheet with fetch/highlight/seek (`YTMGlassLyrics.x`, pill
+  tag 9004, endpoint prefs `lyricsEndpoint`/`lyricsLang`), settings page
+  via avatar account-menu hook (`App/YTMGlassSettings.x`), playback tap
+  (`Shared/YTMGlassPlayback.x`), lyrics service (`Shared/`).
+  CI injects with cyan (`-i decrypted -o out -f deb`).
 
 ## Open / pending
-- Confirm YTM 9.34 settings host class from a recorded tree, then wire
-  `YTMGlassPresentSettingsFromVC`.
-- Device test the pivot bar slice (alpha-fade of YTM bg slabs unverified).
-- Glass now-playing + player + lyrics screens (stubs).
-- Hosted auto-compile inject step (workflow currently uploads the .deb;
-  the cyan/azule inject command is a TODO for the hosted runner).
+- Device test every screen (all hooks are additive + try/caught, but the
+  pill position, card insets and scrubber rounding are unverified).
+- Confirm cyan flags against its README on the hosted runner.
+- Home/Search/Library/queue restyle (not started; needs recorded trees
+  of those screens first).

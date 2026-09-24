@@ -46,6 +46,21 @@ void YTMGlassSetPreference(NSString *key, BOOL value) {
     [[NSUserDefaults standardUserDefaults] setObject:d forKey:YTMGlassDefaultsKey];
 }
 
+NSString *YTMGlassStringPreference(NSString *key, NSString *fallback) {
+    NSDictionary *settings = [[NSUserDefaults standardUserDefaults] dictionaryForKey:YTMGlassDefaultsKey];
+    id value = settings[key];
+    if ([value isKindOfClass:[NSString class]] && [(NSString *)value length] > 0) return value;
+    return fallback;
+}
+
+void YTMGlassSetStringPreference(NSString *key, NSString *value) {
+    NSMutableDictionary *d = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:YTMGlassDefaultsKey] mutableCopy];
+    if (!d) d = [NSMutableDictionary dictionary];
+    if (value.length) d[key] = value;
+    else [d removeObjectForKey:key];
+    [[NSUserDefaults standardUserDefaults] setObject:d forKey:YTMGlassDefaultsKey];
+}
+
 void YTMGlassLog(NSString *msg) {
     NSLog(@"[ytmglass] %@", msg);
 }
