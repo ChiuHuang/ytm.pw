@@ -15,8 +15,12 @@ static const NSInteger kYTMGlassTransportTag = 9003;
 
 static void YTMGlassRoundScrubber(UIView *root) {
     @try {
+        // Class refs must stay runtime-only: these symbols live in the YTM
+        // app, not in the tweak link. Static [YTM… class] fails the link.
+        Class scrubberCls = NSClassFromString(@"YTMStoryboardScrubber");
+        if (!scrubberCls) return;
         for (UIView *sub in root.subviews) {
-            if ([sub isKindOfClass:[YTMStoryboardScrubber class]]) {
+            if ([sub isKindOfClass:scrubberCls]) {
                 for (UIView *track in sub.subviews) {
                     for (UIView *bar in track.subviews) {
                         if (bar.bounds.size.height > 0 && bar.bounds.size.height <= 6.0) {
@@ -39,10 +43,11 @@ static void YTMGlassRoundScrubber(UIView *root) {
     if (!YTMGlassRedesignedUI()) return;
     @try {
         // Find the transport controls; the glass card wraps them.
+        Class controlsCls = NSClassFromString(@"YTMPlayerControlsView");
         YTMPlayerControlsView *controls = nil;
         for (UIView *sub in self.subviews) {
             for (UIView *inner in sub.subviews) {
-                if ([inner isKindOfClass:[YTMPlayerControlsView class]]) {
+                if (controlsCls && [inner isKindOfClass:controlsCls]) {
                     controls = (YTMPlayerControlsView *)inner;
                     break;
                 }

@@ -234,10 +234,12 @@ static const NSInteger kYTMGlassLyricsPillTag = 9004;
             YTMGlassLog(@"lyrics pill installed");
         }
         // Anchor: below YTMPlayerControlsView, else bottom-center.
+        // Runtime lookup only -- the class lives in the YTM app.
+        Class controlsCls = NSClassFromString(@"YTMPlayerControlsView");
         UIView *anchor = nil;
         for (UIView *sub in self.subviews) {
             for (UIView *inner in sub.subviews) {
-                if ([inner isKindOfClass:[YTMPlayerControlsView class]]) { anchor = inner; break; }
+                if (controlsCls && [inner isKindOfClass:controlsCls]) { anchor = inner; break; }
             }
             if (anchor) break;
         }
