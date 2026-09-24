@@ -40,6 +40,13 @@ Apple's own iOS 26 material, reached via runtime lookup only.
   via avatar account-menu hook (`App/YTMGlassSettings.x`), playback tap
   (`Shared/YTMGlassPlayback.x`), lyrics service (`Shared/`).
   CI injects with cyan (`-i decrypted -o out -f deb`).
+- v0.4: push compiles the tweak on Actions (`tweak` job: theos +
+  `gmake package`, deb artifact); IPA job is manual with `ipa_url`.
+  Shared ad skip (`Shared/YTMGlassAdSkip.x`, `noAds` default YES +
+  settings switch) covering InnerTube context, spam signals and player
+  response monetization. Lyrics stack confirmed present: fetch + parse
+  (`Shared/YTMGlassLyricsService`), highlight/seek sheet
+  (`Redesigned/YTMGlassLyrics.x`), endpoint/lang prefs.
 - v0.3 (from 16-03 device dumps): glass search field
   (`YTMGlassSearch.x`, tag 9006, one-time bg thin), browse declutter
   opt-in (`YTMGlassBrowse.x`, `reduceHomeArt` pref default OFF +

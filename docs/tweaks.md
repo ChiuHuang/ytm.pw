@@ -47,10 +47,11 @@ Rules:
 
 ## Build it
 
-No IPA is distributed. Bring a decrypted **YTM 9.34** IPA; you get an
-unsigned IPA back to sign with SideStore, Feather or any signer.
+No IPA is distributed. Bring a decrypted **YTM 9.34** IPA.
 
-- Hosted: Actions -> "Build IPA from your own YTM IPA", paste a direct
-  link to the decrypted `.ipa`. The link is masked in logs, the artifact
-  stays in your fork.
+- Every push compiles the tweak on Actions (the `tweak` job uploads the
+  `.deb`), so breakage shows up without a device.
+- Hosted IPA: Actions -> "Build" -> "Run workflow", paste a direct link
+  to the decrypted `.ipa` as `ipa_url`. The link is masked in logs, the
+  unsigned IPA stays in your fork as an artifact.
 - Mac: Theos in `~/theos`, decrypted IPA in `ipa/`, then `make release`.

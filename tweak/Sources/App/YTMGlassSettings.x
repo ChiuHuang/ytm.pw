@@ -40,7 +40,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) return YTMGlassAvailable() ? 2 : 3;
+    if (section == 0) return YTMGlassAvailable() ? 3 : 4;
     if (section == 1) return 2;
     return 1;
 }
@@ -77,12 +77,21 @@
             cell.accessoryView = sw;
             return cell;
         }
-        cell.textLabel.text = @"Reduce home artwork";
-        cell.detailTextLabel.text = @"Fade the Home art header (restart to apply)";
-        UISwitch *artSw = [[UISwitch alloc] init];
-        artSw.on = YTMGlassPreference(@"reduceHomeArt", NO);
-        [artSw addTarget:self action:@selector(artSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-        cell.accessoryView = artSw;
+        if (lookRow == 1) {
+            cell.textLabel.text = @"Reduce home artwork";
+            cell.detailTextLabel.text = @"Fade the Home art header (restart to apply)";
+            UISwitch *artSw = [[UISwitch alloc] init];
+            artSw.on = YTMGlassPreference(@"reduceHomeArt", NO);
+            [artSw addTarget:self action:@selector(artSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+            cell.accessoryView = artSw;
+            return cell;
+        }
+        cell.textLabel.text = @"Block ads";
+        cell.detailTextLabel.text = @"Skip video and banner ads";
+        UISwitch *adsSw = [[UISwitch alloc] init];
+        adsSw.on = YTMGlassPreference(@"noAds", YES);
+        [adsSw addTarget:self action:@selector(adsSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+        cell.accessoryView = adsSw;
         return cell;
     }
     if (indexPath.section == 1) {
@@ -138,6 +147,11 @@
 - (void)artSwitchChanged:(UISwitch *)sender {
     YTMGlassSetPreference(@"reduceHomeArt", sender.isOn);
     YTMGlassLog([NSString stringWithFormat:@"reduceHomeArt %@", sender.isOn ? @"ON" : @"OFF"]);
+}
+
+- (void)adsSwitchChanged:(UISwitch *)sender {
+    YTMGlassSetPreference(@"noAds", sender.isOn);
+    YTMGlassLog([NSString stringWithFormat:@"noAds %@", sender.isOn ? @"ON" : @"OFF"]);
 }
 
 @end

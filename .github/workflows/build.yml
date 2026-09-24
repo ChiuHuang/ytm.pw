@@ -1,43 +1,75 @@
-name: Build IPA from your own YTM IPA
+name: Build
+
+# Every push compiles the tweak so breakage is caught immediately.
+# The unsigned IPA still needs your decrypted 9.34 IPA: run the
+# "Build IPA" job manually with a direct link (masked in logs, artifact
+# stays in your fork).
 
 on:
+  push:
+    branches: [main]
+  pull_request:
   workflow_dispatch:
     inputs:
       ipa_url:
-        description: "Direct link to your decrypted YTM 9.34 .ipa"
-        required: true
-      version:
-        description: "Mod version label"
+        description: "Direct link to your decrypted YTM 9.34 .ipa (IPA job only)"
         required: false
-        default: "0.1.0"
+        default: ""
 
 jobs:
-  build:
+  tweak:
+    name: Compile tweak
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install build deps
+        run: brew install make ldid dpkg xz
 
       - name: Install Theos
         run: |
           git clone --recursive https://github.com/theos/theos.git "$HOME/theos"
           echo "THEOS=$HOME/theos" >> "$GITHUB_ENV"
 
+      - name: Layer check + package
+        run: |
+          ./scripts/check-layers.sh
+          gmake -C tweak package FINALPACKAGE=1
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ytm-pw-tweak-deb
+          path: tweak/packages/*.deb
+
+  ipa:
+    name: Build unsigned IPA
+    needs: tweak
+    if: inputs.ipa_url != ''
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build deps
+        run: brew install make ldid dpkg xz
+
+      - name: Install Theos
+        run: |
+          git clone --recursive https://github.com/theos/theos.git "$HOME/theos"
+          echo "THEOS=$HOME/theos" >> "$GITHUB_ENV"
+
+      - name: Install cyan
+        run: pip install --force-reinstall https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
+
       - name: Fetch decrypted IPA (link masked, artifact stays in this fork)
         run: |
-          mkdir -p ipa
+          mkdir -p ipa out
           curl -sL "${{ inputs.ipa_url }}" -o ipa/ytm-decrypted.ipa
           ls -la ipa/
 
-      - name: Layer check + build tweak
+      - name: Layer check + package + inject
         run: |
           ./scripts/check-layers.sh
-          gmake -C tweak package
-
-      - name: Inject tweak into IPA (cyan)
-        run: |
-          uv tool install "cyan @ git+https://github.com/asdfzxcvbn/pyzule-rw"
-          mkdir -p out
-          # Flags follow cyan's README; adjust here if its CLI moves.
+          gmake -C tweak package FINALPACKAGE=1
           cyan -i ipa/ytm-decrypted.ipa -o out/ytm.pw-unsigned.ipa -f tweak/packages/*.deb
           ls -la out/
 
