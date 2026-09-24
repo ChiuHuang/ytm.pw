@@ -67,6 +67,18 @@
 @interface YTMStoryboardScrubber : UIView
 @end
 
+// --- Search ---
+// YTMSearchViewController -> YTMSearchBarViewV2 (388x56: back button +
+// query field in a 48pt container). Dump UI_DUMP_16-03-33.txt.
+@interface YTMSearchBarViewV2 : UIView
+@end
+
+// --- Browse background (Home art header) ---
+// YTLightweightBrowseBackgroundView behind the shelves.
+// Dump UI_DUMP_16-03-31.txt (via YTLightweightAsyncCollectionView).
+@interface YTLightweightBrowseBackgroundView : UIView
+@end
+
 // --- Account menu (settings entry point) ---
 // Tapping the avatar opens the account menu via
 // -setAccountMenuUpperButtons:lowerButtons:. Appending a YTMAccountButton

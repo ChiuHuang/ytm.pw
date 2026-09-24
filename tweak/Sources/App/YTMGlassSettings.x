@@ -40,7 +40,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) return YTMGlassAvailable() ? 1 : 2;
+    if (section == 0) return YTMGlassAvailable() ? 2 : 3;
     if (section == 1) return 2;
     return 1;
 }
@@ -66,13 +66,23 @@
             cell.detailTextLabel.text = @"Liquid Glass is drawn by the system from iOS 26 on";
             return cell;
         }
-        cell.textLabel.text = @"Redesigned UI";
-        cell.detailTextLabel.text = @"Liquid Glass look (restart to apply)";
-        UISwitch *sw = [[UISwitch alloc] init];
-        sw.on = YTMGlassRedesignedUIStored();
-        sw.enabled = YTMGlassAvailable();
-        [sw addTarget:self action:@selector(glassSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-        cell.accessoryView = sw;
+        NSInteger lookRow = YTMGlassAvailable() ? indexPath.row : indexPath.row - 1;
+        if (lookRow == 0) {
+            cell.textLabel.text = @"Redesigned UI";
+            cell.detailTextLabel.text = @"Liquid Glass look (restart to apply)";
+            UISwitch *sw = [[UISwitch alloc] init];
+            sw.on = YTMGlassRedesignedUIStored();
+            sw.enabled = YTMGlassAvailable();
+            [sw addTarget:self action:@selector(glassSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+            cell.accessoryView = sw;
+            return cell;
+        }
+        cell.textLabel.text = @"Reduce home artwork";
+        cell.detailTextLabel.text = @"Fade the Home art header (restart to apply)";
+        UISwitch *artSw = [[UISwitch alloc] init];
+        artSw.on = YTMGlassPreference(@"reduceHomeArt", NO);
+        [artSw addTarget:self action:@selector(artSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+        cell.accessoryView = artSw;
         return cell;
     }
     if (indexPath.section == 1) {
@@ -123,6 +133,11 @@
 - (void)glassSwitchChanged:(UISwitch *)sender {
     YTMGlassSetRedesignedUIStored(sender.isOn);
     YTMGlassLog([NSString stringWithFormat:@"redesign %@", sender.isOn ? @"ON" : @"OFF"]);
+}
+
+- (void)artSwitchChanged:(UISwitch *)sender {
+    YTMGlassSetPreference(@"reduceHomeArt", sender.isOn);
+    YTMGlassLog([NSString stringWithFormat:@"reduceHomeArt %@", sender.isOn ? @"ON" : @"OFF"]);
 }
 
 @end
